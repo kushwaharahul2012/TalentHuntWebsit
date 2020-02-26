@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'app/shared/authentication.service';
 @Component({
   selector: 'app-event-registration',
   templateUrl: './event-registration.component.html',
@@ -7,9 +9,21 @@ import { MatDialogRef } from '@angular/material';
 })
 export class EventRegistrationComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<EventRegistrationComponent>) { }
+ 
+  Roles: any = ['Admin', 'Author', 'Reader'];
+  constructor(public dialogRef: MatDialogRef<EventRegistrationComponent>,
+    private router: Router,
+    public AuthenticationService: AuthenticationService,)
+     { }
+    
+
 
   ngOnInit() {
   }
-
+  onClose() {
+    
+    this.dialogRef.close();
+  }
+ 
 }
+

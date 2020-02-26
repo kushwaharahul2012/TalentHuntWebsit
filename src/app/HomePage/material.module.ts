@@ -19,6 +19,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { EventRegistrationComponent } from './event-registration/event-registration.component';
+import { MatCardModule, MatDialogModule, MatMenuModule, MatProgressSpinnerModule } from '@angular/material';
+import { LoginComponent } from './login/login.component';
+
 
 @NgModule({
    imports: [
@@ -39,7 +42,17 @@ import { EventRegistrationComponent } from './event-registration/event-registrat
       MatChipsModule,
       MatTooltipModule,
       MatTableModule,
-      MatPaginatorModule
+      MatPaginatorModule,
+      MatToolbarModule,
+      MatButtonModule, 
+      MatCardModule,
+      MatInputModule,
+      MatDialogModule,
+      MatTableModule,
+      MatMenuModule,
+      MatIconModule,
+      MatProgressSpinnerModule
+     
    ],
    exports: [
       MatButtonModule,
@@ -57,12 +70,21 @@ import { EventRegistrationComponent } from './event-registration/event-registrat
       MatChipsModule,
       MatTooltipModule,
       MatTableModule,
-      MatPaginatorModule
+      MatPaginatorModule,
+      MatToolbarModule,
+      MatButtonModule, 
+      MatCardModule,
+      MatInputModule,
+      MatDialogModule,
+      MatTableModule,
+      MatMenuModule,
+      MatIconModule,
+      MatProgressSpinnerModule
    ],
    providers: [
       MatDatepickerModule,
    ],
-   declarations: [EventRegistrationComponent]
+   declarations: []
 })
 
 export class AngularMaterialModule { }

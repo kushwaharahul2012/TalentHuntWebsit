@@ -17,7 +17,7 @@ import { TypographyComponent } from './typography/typography.component';
 import { IconsComponent } from './icons/icons.component';
 import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
-
+import { FlexLayoutModule } from "@angular/flex-layout";
 import {
   AgmCoreModule
 } from '@agm/core';
@@ -27,6 +27,13 @@ import { HomeFooterComponent } from './HomePage/home-footer/home-footer.componen
 import { HomeComponent } from './HomePage/home/home.component';
 import { AngularMaterialModule } from './HomePage/material.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EventRegistrationComponent } from './HomePage/event-registration/event-registration.component';
+import { LoginComponent } from './HomePage/login/login.component';
+import { environment } from 'environments/environment';
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AuthenticationService } from './shared/authentication.service';
+import { MatDialogModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -37,11 +44,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-    }),
+    AgmCoreModule,
     AngularMaterialModule,
-    NgbModule
+    NgbModule,
+    FlexLayoutModule,
+    AngularFireAuthModule,
+    AngularFireModule.initializeApp(environment.firebaseconfig),
+    MatDialogModule
   ],
   declarations: [
     AppComponent,
@@ -49,10 +58,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HomeNavbarComponent,
     HomeFooterComponent,
     HomeComponent,
+    EventRegistrationComponent,LoginComponent
 
   ],
-  providers: [],
+  providers: [AuthenticationService],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  entryComponents: [LoginComponent,EventRegistrationComponent],
 })
 export class AppModule { }

@@ -1,5 +1,37 @@
-<mat-toolbar>
-  <span></span>
-  <span class="fill-remaining-space"></span>
-  <button class="btn-dialog-close" mat-stroked-button tabIndex="-1"><mat-icon>clear</mat-icon></button>
-</mat-toolbar>
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+ 
+    <form class="example-form">
+
+      <mat-card-content>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Username">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Email" #email required>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Password" #password required>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Choose a role...</mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option [value]="roles" *ngFor="let roles of Roles">{{roles}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </mat-card-content>
+
+      <button mat-stroked-button color="accent" value="SignUp" (click)="AuthenticationService.SignUp(email.value, password.value)">Registration</button>
+      <button mat-stroked-button color="primary" (click)="onClose()"class="btn-block">Close</button>
+
+    </form>
+  </mat-card>
+</div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'app/shared/authentication.service';
 
 @Component({
   selector: 'app-home-footer',
@@ -7,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeFooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,
+    public AuthenticationService: AuthenticationService,) { }
 
   ngOnInit() {
   }
