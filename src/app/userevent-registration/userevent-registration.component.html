@@ -1,0 +1,110 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title">Create Event</h4>
+                      <p class="card-category">Complete your Registration</p>
+                  </div>
+                  <div class="card-body">
+                      <form [formGroup]="angform">
+                          <div class="row">
+                              <div class="col-md-6">
+                                <input type="hidden" formControlName="$key">
+                                <mat-form-field class="example-full-width">
+                                    <input formControlName="Title" matInput placeholder="Title">
+                                    <mat-error>This field is mandatory.</mat-error>
+                                  </mat-form-field>
+                              </div>
+                             
+                              <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input formControlName="EventName" matInput placeholder="Event Name">
+                                    <mat-error>This field is mandatory.</mat-error>
+                                  </mat-form-field>
+                              </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                                <mat-label>Event Start Date</mat-label>
+                                <input formControlName="EventStartDate" matInput [matDatepicker]="picker">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                                <mat-label>Event End Date</mat-label>
+                                <input formControlName="EventEndDate" matInput [matDatepicker]="picker1">
+                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                <mat-datepicker #picker1></mat-datepicker>
+                              </mat-form-field>
+                            </div>
+                           
+                          </div>
+                          <div class="row">
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <mat-label>Event-Type</mat-label>
+                                  <mat-select formControlName="EventType" [(value)]="selected">
+                                    <mat-option>None</mat-option>
+                                    <mat-option value="option1">Dancing</mat-option>
+                                    <mat-option value="option2">Acting</mat-option>
+                                    <mat-option value="option3">Other</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input formControlName="mobile" matInput placeholder="Contact No">
+                                  <mat-error *ngIf="service.form.controls['mobile'].errors?.minlength">Minimum 10 charactors needed.</mat-error>
+                                </mat-form-field>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-12">
+                                <mat-form-field class="example-full-width">
+                                  <input formControlName="address" matInput placeholder="Address" type="text">
+                                </mat-form-field>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input formControlName="city" matInput placeholder="City" type="text">
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input formControlName="country" matInput placeholder="Country" type="text">
+                                </mat-form-field>
+                              </div>
+                            
+                          </div>
+                          <div class="row">
+                              <div class="col-md-12">
+                              
+                                <mat-form-field class="example-full-width">
+                                   <textarea formControlName="about" matInput placeholder="About"></textarea>
+                                 </mat-form-field>
+                                 
+                              </div>
+                          </div>
+                         
+                          <div>
+                          <input class="ng-hide" id="input-file-id" multiple type="file" />
+                          <label for="input-file-id" class="md-button md-raised md-primary">Choose Files</label>
+                        </div>
+                          <button mat-raised-button type="submit" class="btn btn-primary" [disabled]="angform.invalid" (click)="addEvent()">Create Event</button>
+                          <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+                          <div class="clearfix"></div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+         
+      </div>
+  </div>
+</div>

@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
 import { User } from '../shared/services/user';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class AuthenticationService {
    
     public afAuth: AngularFireAuth,
     public router: Router,
-    public ngZone: NgZone,)
+    public ngZone: NgZone,
+    private toastr: ToastrService,)
      { 
     this.userData = angularFireAuth.authState;
   }
@@ -52,7 +54,7 @@ export class AuthenticationService {
      
         this.SetUserData(result.user);
       }).catch((error) => {
-        window.alert(error.message)
+        this.toastr.warning(error.message)
       })
   }
  
@@ -61,12 +63,13 @@ export class AuthenticationService {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
+          this.toastr.success("You Login SuccesFully")
           this.router.navigate(['dashboard']);
          
         });
        
       }).catch((error) => {
-        window.alert(error.message)
+        this.toastr.warning(error.message)
       })
   }
 /* Setting up user data when sign in with username/password,
@@ -86,5 +89,12 @@ export class AuthenticationService {
       merge: true
     
   }
+ // Sign out
+ SignOut() {
+  return this.afAuth.auth.signOut().then(() => {
+    localStorage.removeItem('user');
+    this.router.navigate(['HomeComponent']);
+  })
+}
 
 }

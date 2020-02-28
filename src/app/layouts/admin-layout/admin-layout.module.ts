@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -10,6 +10,7 @@ import { TypographyComponent } from '../../typography/typography.component';
 import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
+import { MatFileUploadModule } from 'angular-material-fileupload';
 
 import {
   MatButtonModule,
@@ -17,8 +18,31 @@ import {
   MatRippleModule,
   MatFormFieldModule,
   MatTooltipModule,
-  MatSelectModule
+  MatSelectModule,
+ 
+  
+  MatToolbarModule,
+  MatIconModule,
+  MatSidenavModule,
+  MatBadgeModule,
+  MatListModule,
+  MatGridListModule,
+
+ 
+  MatRadioModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatChipsModule,
+
+  MatTableModule,
+  MatPaginatorModule,
+
+ 
+ 
+  MatCardModule,
 } from '@angular/material';
+import { UsereventRegistrationComponent } from 'app/userevent-registration/userevent-registration.component';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   imports: [
     CommonModule,
@@ -26,11 +50,36 @@ import {
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
-    MatRippleModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatTooltipModule,
+  MatInputModule,
+  MatRippleModule,
+  MatFormFieldModule,
+  MatTooltipModule,
+  MatSelectModule,
+  MatFileUploadModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatSidenavModule,
+  MatBadgeModule,
+  MatListModule,
+  MatGridListModule,
+
+ 
+  MatRadioModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatChipsModule,
+
+  MatTableModule,
+  MatPaginatorModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatFormFieldModule,
+  MatInputModule,
+  ToastrModule.forRoot({
+    timeOut: 5000,
+    positionClass: 'toast-bottom-right',
+    preventDuplicates: true,
+  }),
   ],
   declarations: [
     DashboardComponent,
@@ -40,8 +89,9 @@ import {
     IconsComponent,
     MapsComponent,
     NotificationsComponent,
-   
-  ]
+   UsereventRegistrationComponent
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 
 export class AdminLayoutModule {}

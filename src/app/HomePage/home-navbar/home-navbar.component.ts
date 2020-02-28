@@ -3,6 +3,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material';
 import { EventRegistrationComponent } from '../event-registration/event-registration.component';
 import { LoginComponent } from '../login/login.component';
 import { AuthenticationService } from 'app/shared/authentication.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class HomeNavbarComponent implements OnInit {
 
   constructor( public dialogRef: MatDialog,
     public dialog: MatDialog,
-    private AuthenticationService: AuthenticationService) { }
+    private AuthenticationService: AuthenticationService,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
   }
@@ -35,10 +37,12 @@ onCreate(): void {
 }
 
   
-  onCreatelogin() {
-   
-    this.dialog.open(LoginComponent);
-
+onCreatelogin() {
+  const dialogConfig = new MatDialogConfig();
+    this.dialog.open(LoginComponent,dialogConfig);
   }
+
+
+
 
 }

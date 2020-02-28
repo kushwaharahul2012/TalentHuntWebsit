@@ -12,7 +12,8 @@
     </mat-form-field>
   </mat-card-content>
   <mat-card-actions align="end">
-    <button mat-raised-button color="primary" value="Log in" (click)="AuthenticationService.SignIn(email.value, password.value)">Login</button>
+    <button mat-raised-button color="primary" value="Log in" (click)="AuthenticationService.SignIn(email.value, password.value)" mat-dialog-close>Login</button>
+    <button (click)="Close()">Close</button>
   </mat-card-actions>
   </mat-card>
   </div>

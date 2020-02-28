@@ -32,8 +32,13 @@ import { LoginComponent } from './HomePage/login/login.component';
 import { environment } from 'environments/environment';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AuthenticationService } from './shared/authentication.service';
-import { MatDialogModule } from '@angular/material';
+import { MatDialogModule, MatInputModule } from '@angular/material';
+import { ToastrModule } from 'ngx-toastr';
+import { MatFileUploadModule } from 'angular-material-fileupload';
+
+
 
 @NgModule({
   imports: [
@@ -50,7 +55,16 @@ import { MatDialogModule } from '@angular/material';
     FlexLayoutModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseconfig),
-    MatDialogModule
+    AngularFireDatabaseModule,
+    MatDialogModule,
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
+    MatFileUploadModule,
+    MatInputModule
+   
   ],
   declarations: [
     AppComponent,
@@ -58,7 +72,7 @@ import { MatDialogModule } from '@angular/material';
     HomeNavbarComponent,
     HomeFooterComponent,
     HomeComponent,
-    EventRegistrationComponent,LoginComponent
+    EventRegistrationComponent,LoginComponent,
 
   ],
   providers: [AuthenticationService],
