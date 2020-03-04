@@ -4,16 +4,17 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { HomeComponent } from './HomePage/home/home.component';
+import { HomeNavbarComponent } from './HomePage/home-navbar/home-navbar.component';
 
 const routes: Routes =[
   {
     path: '',
-    redirectTo: 'HomeComponent',
+    redirectTo: 'Home',
     pathMatch: 'full',
   },
-  { path: '', pathMatch: 'full', redirectTo: 'HomeComponent' },
-  { path: 'HomeComponent', component: HomeComponent },
+  { path: '', pathMatch: 'full', redirectTo: 'Home' },
+  { path: 'Home', component: HomeNavbarComponent },
+
   {
     path: '',
     component: AdminLayoutComponent,

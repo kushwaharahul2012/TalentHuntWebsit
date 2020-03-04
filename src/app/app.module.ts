@@ -24,7 +24,7 @@ import {
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { HomeNavbarComponent } from './HomePage/home-navbar/home-navbar.component';
 import { HomeFooterComponent } from './HomePage/home-footer/home-footer.component';
-import { HomeComponent } from './HomePage/home/home.component';
+
 import { AngularMaterialModule } from './HomePage/material.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EventRegistrationComponent } from './HomePage/event-registration/event-registration.component';
@@ -37,6 +37,7 @@ import { AuthenticationService } from './shared/authentication.service';
 import { MatDialogModule, MatInputModule } from '@angular/material';
 import { ToastrModule } from 'ngx-toastr';
 import { MatFileUploadModule } from 'angular-material-fileupload';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 
 
@@ -71,11 +72,11 @@ import { MatFileUploadModule } from 'angular-material-fileupload';
     AdminLayoutComponent,
     HomeNavbarComponent,
     HomeFooterComponent,
-    HomeComponent,
+
     EventRegistrationComponent,LoginComponent,
 
   ],
-  providers: [AuthenticationService],
+  providers: [AuthenticationService,AngularFirestore],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [LoginComponent,EventRegistrationComponent],

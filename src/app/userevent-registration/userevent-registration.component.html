@@ -8,7 +8,7 @@
                       <p class="card-category">Complete your Registration</p>
                   </div>
                   <div class="card-body">
-                      <form [formGroup]="angform">
+                      <form [formGroup]="angform"(ngSubmit)="onSubmit(angform.value)">
                           <div class="row">
                               <div class="col-md-6">
                                 <input type="hidden" formControlName="$key">
@@ -48,18 +48,17 @@
                               <div class="col-md-6">
                                 <mat-form-field class="example-full-width">
                                   <mat-label>Event-Type</mat-label>
-                                  <mat-select formControlName="EventType" [(value)]="selected">
-                                    <mat-option>None</mat-option>
-                                    <mat-option value="option1">Dancing</mat-option>
-                                    <mat-option value="option2">Acting</mat-option>
-                                    <mat-option value="option3">Other</mat-option>
+                                  <mat-select formControlName="EventType">
+                                    <mat-option *ngFor="let EventType of EventTypes" [value]="EventType">
+                                      {{EventType}}
+                                    </mat-option>
                                   </mat-select>
                                 </mat-form-field>
                               </div>
                               <div class="col-md-6">
                                 <mat-form-field class="example-full-width">
                                   <input formControlName="mobile" matInput placeholder="Contact No">
-                                  <mat-error *ngIf="service.form.controls['mobile'].errors?.minlength">Minimum 10 charactors needed.</mat-error>
+                                  <mat-error *ngIf="angform.controls['mobile'].errors?.minlength">Minimum 10 charactors needed.</mat-error>
                                 </mat-form-field>
                               </div>
                           </div>
@@ -92,12 +91,13 @@
                                  
                               </div>
                           </div>
+                          <div class="col-md-3">
                          
-                          <div>
-                          <input class="ng-hide" id="input-file-id" multiple type="file" />
-                          <label for="input-file-id" class="md-button md-raised md-primary">Choose Files</label>
+                          <input class="ng-hide" formControlName="Poster" id="Poster" multiple type="file" />
+                          <label for="Poster" class="md-button md-raised md-primary">Choose Files</label>
+                        
                         </div>
-                          <button mat-raised-button type="submit" class="btn btn-primary" [disabled]="angform.invalid" (click)="addEvent()">Create Event</button>
+                          <button mat-raised-button type="submit" class="btn btn-primary" [disabled]="!angform.valid">Create Event</button>
                           <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
                           <div class="clearfix"></div>
                       </form>
